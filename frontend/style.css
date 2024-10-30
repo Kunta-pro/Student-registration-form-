@@ -1,0 +1,72 @@
+/* style.css */
+
+body {
+    background-color: white; /* White background */
+    color: black; /* Black text */
+    font-family: Arial, sans-serif; /* Arial font */
+    margin: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%; /* Circular display for logo */
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+}
+
+h1 {
+    text-align: center;
+}
+
+.section {
+    margin: 20px 0;
+}
+
+.section h2 {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.section-content {
+    padding: 10px;
+    background-color: #e7e7e7; /* Light gray for section content */
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none; /* Hide sections by default */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
