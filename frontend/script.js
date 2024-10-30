@@ -1,45 +1,51 @@
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.querySelector("form");
+// Initialize Supabase
+const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+const SUPABASE_KEY = 'your-supabase-public-api-key';
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form submission for validation
-            const errors = [];
+// Form submission handler
+document.getElementById("submitBtn").addEventListener("click", async (event) => {
+    event.preventDefault();
 
-            // Get form field values
-            const firstName = document.getElementById("firstName").value.trim();
-            const middleName = document.getElementById("middleName").value.trim();
-            const lastName = document.getElementById("lastName").value.trim();
-            const email = document.querySelector("input[type='email']").value.trim();
-            const mobile = document.querySelector("input[type='tel']").value.trim();
-            const gender = document.querySelector("select").value;
+    // Collect form data
+    const formData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        dob: document.getElementById("dob").value,
+        studentId: document.getElementById("studentId").value,
+        age: parseInt(document.getElementById("age").value),
+        village: document.getElementById("village").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        motherName: document.getElementById("motherName").value,
+        motherPhone: document.getElementById("motherPhone").value,
+        fatherName: document.getElementById("fatherName").value,
+        fatherPhone: document.getElementById("fatherPhone").value,
+        parentsOccupation: document.getElementById("parentsOccupation").value,
+        class: document.getElementById("class").value,
+        level: document.getElementById("level").value,
+        diagnosis: document.getElementById("diagnosis").value,
+        recommendations: document.getElementById("recommendations").value,
+        healthInfo: {
+            cardiovascular: document.querySelector("input[value='Cardiovascular System']").checked,
+            respiratory: document.querySelector("input[value='Respiratory System']").checked,
+            digestive: document.querySelector("input[value='Digestive System']").checked,
+            nervous: document.querySelector("input[value='Nervous System']").checked,
+            musculoskeletal: document.querySelector("input[value='Musculoskeletal System']").checked
+        }
+    };
 
-            // Validate required fields
-            if (!firstName) errors.push("First Name is required.");
-            if (!lastName) errors.push("Last Name is required.");
-            if (!email) errors.push("Email is required.");
-            if (!mobile) errors.push("Mobile Number is required.");
-            if (gender === "Please Select") errors.push("Gender is required.");
+    // Insert data into Supabase
+    try {
+        const { data, error } = await supabase
+            .from('students') // replace 'students' with your table name
+            .insert([formData]);
 
-            // Validate email format
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email && !emailPattern.test(email)) {
-                errors.push("Please enter a valid email address.");
-            }
-
-            // Validate mobile number format
-            const mobilePattern = /^[0-9]{10}$/; // Adjust to your preferred pattern
-            if (mobile && !mobilePattern.test(mobile)) {
-                errors.push("Please enter a valid 10-digit mobile number.");
-            }
-
-            // Display errors or submit form
-            if (errors.length > 0) {
-                alert("Please fix the following errors:\n" + errors.join("\n"));
-            } else {
-                alert("Form submitted successfully!");
-                form.submit(); // Uncomment to submit the form after validation
-            }
-        });
-    });
-</script>
+        if (error) throw error;
+        
+        alert("Registration submitted successfully!");
+    } catch (error) {
+        console.error("Error submitting registration:", error.message);
+        alert("Failed to submit the registration. Please try again.");
+    }
+});
