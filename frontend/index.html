@@ -3,158 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration Form</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Registration Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            font-size: 14px; /* Reduced font size */
-            background-color: white; /* White background */
-            color: black; /* Black text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+        .form-container {
+            width: 400px;
+            background-color: #fff;
             padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
-        .logo {
-            display: block;
-            margin: 0 auto 20px;
-            width: 100px; /* Adjust as needed */
-            height: 100px; /* Adjust as needed */
-            border-radius: 50%; /* Circular display */
-        }
-        h1, h2 {
-            margin: 10px 0;
-        }
-        .section {
+        .form-container h2 {
+            text-align: center;
             margin-bottom: 20px;
-            border: 1px solid #ccc; /* Optional border */
-            padding: 10px; /* Optional padding */
-            border-radius: 5px; /* Optional rounded corners */
         }
-        .section-content {
-            display: block; /* Show all section content */
-            margin-top: 10px; /* Space between header and content */
+        .form-group {
+            margin-bottom: 15px;
         }
-        label {
-            display: block; /* Make labels block elements */
-            margin-top: 10px; /* Space above each label */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
         }
-        input, textarea {
-            width: 100%; /* Full width inputs */
-            padding: 8px; /* Padding for inputs */
-            margin-top: 5px; /* Space above inputs */
-            border: 1px solid #ccc; /* Border for inputs */
-            border-radius: 4px; /* Rounded corners for inputs */
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        button {
-            margin-top: 20px; /* Space above button */
-            padding: 10px 15px; /* Padding for button */
-            background-color: #333; /* Dark background */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            border-radius: 4px; /* Rounded corners for button */
-            cursor: pointer; /* Pointer cursor on hover */
+        .form-group textarea {
+            resize: vertical;
         }
-        button:hover {
-            background-color: #555; /* Darker background on hover */
+        .form-group.row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group.row .column {
+            width: 48%;
+        }
+        .form-group.row .column input,
+        .form-group.row .column select {
+            width: 100%;
+        }
+        .form-submit {
+            display: flex;
+            justify-content: center;
+        }
+        .form-submit button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-submit button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://raw.githubusercontent.com/Kunta-pro/Kunta-pro/main/Screenshot_20241030_225642_Google.jpg" alt="School Logo" class="logo"> <!-- Updated logo URL -->
-        <h1>STUDENT REGISTRATION FORM</h1>
-        
-        <div class="section" id="biodata">
-            <h2>Biodata</h2>
-            <div class="section-content">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" required>
-                
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" required>
-                
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" required>
-                
-                <label for="studentId">Student ID:</label>
-                <input type="text" id="studentId" required>
-                
-                <label for="age">Age:</label>
-                <input type="number" id="age" required>
-            </div>
-        </div>
-
-        <div class="section" id="address">
-            <h2>Address</h2>
-            <div class="section-content">
-                <label for="village">Village:</label>
-                <input type="text" id="village" required>
-                
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" required>
-                
-                <label for="email">Email (Optional):</label>
-                <input type="email" id="email">
-            </div>
-        </div>
-
-        <div class="section" id="parentsInfo">
-            <h2>Parents Info</h2>
-            <div class="section-content">
-                <label for="motherName">Mother's Name:</label>
-                <input type="text" id="motherName" required>
-                
-                <label for="motherPhone">Mother's Phone Number:</label>
-                <input type="tel" id="motherPhone" required>
-                
-                <label for="fatherName">Father's Name:</label>
-                <input type="text" id="fatherName" required>
-                
-                <label for="fatherPhone">Father's Phone Number:</label>
-                <input type="tel" id="fatherPhone" required>
-                
-                <label for="parentsOccupation">Parents' Occupation:</label>
-                <input type="text" id="parentsOccupation" required>
-            </div>
-        </div>
-
-        <div class="section" id="educationInfo">
-            <h2>Education Info</h2>
-            <div class="section-content">
-                <label for="class">Class:</label>
-                <input type="text" id="class" required>
-                
-                <label for="level">Level:</label>
-                <input type="text" id="level" required>
-            </div>
-        </div>
-
-        <div class="section" id="healthInfo">
-            <h2>Health Info</h2>
-            <div class="section-content">
-                <label for="bodySystems">Body Systems Assessment:</label>
-                <div>
-                    <label><input type="checkbox"> Cardiovascular System</label>
-                    <label><input type="checkbox"> Respiratory System</label>
-                    <label><input type="checkbox"> Digestive System</label>
-                    <label><input type="checkbox"> Nervous System</label>
-                    <label><input type="checkbox"> Musculoskeletal System</label>
-                    <!-- Add more as needed -->
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <div class="row">
+                    <div class="column"><input type="text" id="firstName" placeholder="First Name"></div>
+                    <div class="column"><input type="text" id="middleName" placeholder="Middle Name"></div>
+                    <div class="column"><input type="text" id="lastName" placeholder="Last Name"></div>
                 </div>
-                
-                <label for="diagnosis">Diagnosis:</label>
-                <textarea id="diagnosis" rows="3"></textarea>
-
-                <label for="recommendations">Recommendations:</label>
-                <textarea id="recommendations" rows="3"></textarea>
             </div>
-        </div>
-
-        <button id="submitBtn">Submit</button>
+            <div class="form-group row">
+                <div class="column">
+                    <label for="birthDate">Birth Date</label>
+                    <select>
+                        <option>Month</option>
+                    </select>
+                    <select>
+                        <option>Day</option>
+                    </select>
+                    <select>
+                        <option>Year</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <label for="gender">Gender</label>
+                    <select>
+                        <option>Please Select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" placeholder="Street Address">
+                <input type="text" placeholder="Street Address Line 2">
+                <div class="row">
+                    <div class="column"><input type="text" placeholder="City"></div>
+                    <div class="column"><input type="text" placeholder="State / Province"></div>
+                </div>
+                <input type="text" placeholder="Postal / Zip Code">
+            </div>
+            <div class="form-group">
+                <label for="email">Student Email</label>
+                <input type="email" placeholder="example@example.com">
+            </div>
+            <div class="form-group row">
+                <div class="column"><label for="mobile">Mobile Number</label><input type="tel"></div>
+                <div class="column"><label for="phone">Phone Number</label><input type="tel"></div>
+            </div>
+            <div class="form-group row">
+                <div class="column"><label for="work">Work Number</label><input type="tel"></div>
+                <div class="column"><label for="company">Company</label><input type="text"></div>
+            </div>
+            <div class="form-group">
+                <label for="courses">Courses</label>
+                <select>
+                    <option>Please Select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comments">Additional Comments</label>
+                <textarea rows="3"></textarea>
+            </div>
+            <div class="form-submit">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
