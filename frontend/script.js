@@ -1,77 +1,45 @@
-// script.js
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
 
-// Function to toggle the visibility of a section
-function toggleSection(contentId) {
-    const content = document.getElementById(contentId);
-    content.classList.toggle('hidden'); // Toggle visibility
-}
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission for validation
+            const errors = [];
 
-// Function to submit form data to Supabase
-document.getElementById('submitBtn').addEventListener('click', async () => {
-    // Collecting form data
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const dob = document.getElementById('dob').value;
-    const studentId = document.getElementById('studentId').value;
-    const age = document.getElementById('age').value;
-    const village = document.getElementById('village').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const motherName = document.getElementById('motherName').value;
-    const motherPhone = document.getElementById('motherPhone').value;
-    const fatherName = document.getElementById('fatherName').value;
-    const fatherPhone = document.getElementById('fatherPhone').value;
-    const parentsOccupation = document.getElementById('parentsOccupation').value;
-    const classInfo = document.getElementById('class').value;
-    const level = document.getElementById('level').value;
-    const diagnosis = document.getElementById('diagnosis').value;
-    const recommendations = document.getElementById('recommendations').value;
+            // Get form field values
+            const firstName = document.getElementById("firstName").value.trim();
+            const middleName = document.getElementById("middleName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.querySelector("input[type='email']").value.trim();
+            const mobile = document.querySelector("input[type='tel']").value.trim();
+            const gender = document.querySelector("select").value;
 
-    const bodySystems = Array.from(document.querySelectorAll('#healthInfo input[type="checkbox"]:checked'))
-        .map(cb => cb.parentElement.innerText.trim());
+            // Validate required fields
+            if (!firstName) errors.push("First Name is required.");
+            if (!lastName) errors.push("Last Name is required.");
+            if (!email) errors.push("Email is required.");
+            if (!mobile) errors.push("Mobile Number is required.");
+            if (gender === "Please Select") errors.push("Gender is required.");
 
-    const data = {
-        first_name: firstName, // Ensure keys match your Supabase table column names
-        last_name: lastName,
-        dob,
-        student_id: studentId,
-        age,
-        village,
-        phone,
-        email,
-        mother_name: motherName,
-        mother_phone: motherPhone,
-        father_name: fatherName,
-        father_phone: fatherPhone,
-        parents_occupation: parentsOccupation,
-        class: classInfo,
-        level,
-        diagnosis,
-        recommendations,
-        body_systems: bodySystems,
-    };
+            // Validate email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailPattern.test(email)) {
+                errors.push("Please enter a valid email address.");
+            }
 
-    try {
-        // Replace with your Supabase URL and API key
-        const response = await fetch('https://YOUR_SUPABASE_URL/rest/v1/YOUR_TABLE_NAME', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer YOUR_SUPABASE_API_KEY',
-                'Prefer': 'return=representation' // To return the inserted row
-            },
-            body: JSON.stringify(data),
+            // Validate mobile number format
+            const mobilePattern = /^[0-9]{10}$/; // Adjust to your preferred pattern
+            if (mobile && !mobilePattern.test(mobile)) {
+                errors.push("Please enter a valid 10-digit mobile number.");
+            }
+
+            // Display errors or submit form
+            if (errors.length > 0) {
+                alert("Please fix the following errors:\n" + errors.join("\n"));
+            } else {
+                alert("Form submitted successfully!");
+                form.submit(); // Uncomment to submit the form after validation
+            }
         });
-
-        if (response.ok) {
-            const result = await response.json();
-            alert('Data submitted successfully! ID: ' + result.id);
-        } else {
-            const error = await response.json();
-            alert('Error submitting data: ' + error.message);
-        }
-    } catch (err) {
-        console.error(err);
-        alert('An unexpected error occurred. Please try again later.');
-    }
-});
+    });
+</script>
