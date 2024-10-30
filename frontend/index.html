@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Student Registration Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,13 +20,15 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            text-align: center;
         }
         .form-container h2 {
-            text-align: center;
+            margin-top: 10px;
             margin-bottom: 20px;
         }
         .form-group {
             margin-bottom: 15px;
+            text-align: left;
         }
         .form-group label {
             display: block;
@@ -69,11 +71,23 @@
         .form-submit button:hover {
             background-color: #45a049;
         }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Registration Form</h2>
+        <!-- Logo -->
+        <img src="https://github.com/Kunta-pro/Kunta-pro/blob/main/Screenshot_20241030_225642_Google.jpg?raw=true" alt="Logo" class="logo">
+        
+        <!-- Form Title -->
+        <h2>Student Registration Form</h2>
+        
+        <!-- Form Fields -->
         <form>
             <div class="form-group">
                 <label for="studentName">Student Name</label>
