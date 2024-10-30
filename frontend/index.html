@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <img src="school-logo-url.jpg" alt="School Logo" class="logo"> <!-- Replace with your school logo URL -->
+        <h1>STUDENT REGISTRATION FORM</h1>
+        
+        <div class="section" id="biodata">
+            <h2 onclick="toggleSection('biodataContent')">Biodata</h2>
+            <div class="section-content hidden" id="biodataContent">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" required>
+                
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" required>
+                
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" required>
+                
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" required>
+                
+                <label for="age">Age:</label>
+                <input type="number" id="age" required>
+            </div>
+        </div>
+
+        <div class="section" id="address">
+            <h2 onclick="toggleSection('addressContent')">Address</h2>
+            <div class="section-content hidden" id="addressContent">
+                <label for="village">Village:</label>
+                <input type="text" id="village" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="email">Email (Optional):</label>
+                <input type="email" id="email">
+            </div>
+        </div>
+
+        <div class="section" id="parentsInfo">
+            <h2 onclick="toggleSection('parentsInfoContent')">Parents Info</h2>
+            <div class="section-content hidden" id="parentsInfoContent">
+                <label for="motherName">Mother's Name:</label>
+                <input type="text" id="motherName" required>
+                
+                <label for="motherPhone">Mother's Phone Number:</label>
+                <input type="tel" id="motherPhone" required>
+                
+                <label for="fatherName">Father's Name:</label>
+                <input type="text" id="fatherName" required>
+                
+                <label for="fatherPhone">Father's Phone Number:</label>
+                <input type="tel" id="fatherPhone" required>
+                
+                <label for="parentsOccupation">Parents' Occupation:</label>
+                <input type="text" id="parentsOccupation" required>
+            </div>
+        </div>
+
+        <div class="section" id="educationInfo">
+            <h2 onclick="toggleSection('educationInfoContent')">Education Info</h2>
+            <div class="section-content hidden" id="educationInfoContent">
+                <label for="class">Class:</label>
+                <input type="text" id="class" required>
+                
+                <label for="level">Level:</label>
+                <input type="text" id="level" required>
+            </div>
+        </div>
+
+        <div class="section" id="healthInfo">
+            <h2 onclick="toggleSection('healthInfoContent')">Health Info</h2>
+            <div class="section-content hidden" id="healthInfoContent">
+                <label for="bodySystems">Body Systems Assessment:</label>
+                <div>
+                    <label><input type="checkbox"> Cardiovascular System</label>
+                    <label><input type="checkbox"> Respiratory System</label>
+                    <label><input type="checkbox"> Digestive System</label>
+                    <label><input type="checkbox"> Nervous System</label>
+                    <label><input type="checkbox"> Musculoskeletal System</label>
+                    <!-- Add more as needed -->
+                </div>
+                
+                <label for="diagnosis">Diagnosis:</label>
+                <textarea id="diagnosis" rows="3"></textarea>
+
+                <label for="recommendations">Recommendations:</label>
+                <textarea id="recommendations" rows="3"></textarea>
+            </div>
+        </div>
+
+        <button id="submitBtn">Submit</button>
+    </div>
+</body>
+</html>
